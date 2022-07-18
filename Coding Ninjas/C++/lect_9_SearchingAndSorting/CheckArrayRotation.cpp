@@ -1,47 +1,60 @@
 /*
 
-Second Largest in array
+SCheck Array Rotation
 Send Feedback
-You have been given a random integer array/list(ARR) of size N. You are required to find and return the second largest element present in the array/list.
-If N <= 1 or all the elements are same in the array/list then return -2147483648 or -2 ^ 31(It is the smallest value for the range of Integer)
+You have been given an integer array/list(ARR) of size N. It has been sorted(in increasing order) and then rotated by some number 'K' in the right hand direction.
+Your task is to write a function that returns the value of 'K', that means, the index from which the array/list has been rotated.
 Input format :
 The first line contains an Integer 't' which denotes the number of test cases or queries to be run. Then the test cases follow.
 
-The first line of each test case or query contains an integer 'N' representing the size of the array/list.
+First line of each test case or query contains an integer 'N' representing the size of the array/list.
 
-The second line contains 'N' single space separated integers representing the elements in the array/list.
+Second line contains 'N' single space separated integers representing the elements in the array/list.
 Output Format :
-For each test case, print the second largest in the array/list if exists, -2147483648 otherwise.
+For each test case, print the value of 'K' or the index from which which the array/list has been rotated.
 
 Output for every test case will be printed in a separate line.
 Constraints :
 1 <= t <= 10^2
 0 <= N <= 10^5
-
 Time Limit: 1 sec
 Sample Input 1:
 1
-7
-2 13 4 1 3 6 28
-Sample Output 1:
-13
-Sample Input 2:
-1
-5
-9 3 6 2 9
-Sample Output 2:
 6
-Sample Input 3:
+5 6 1 2 3 4
+Sample Output 1:
 2
+Sample Input 2:
 2
-6 6
+5
+3 6 8 9 10
 4
-90 8 90 5
-Sample Output 3:
--2147483648
-8
-
+10 20 30 1
+Sample Output 2:
+0
+3
 */
 
 // solution 
-
+int arrayRotateCheck(int *input, int size)
+{
+    
+    int min=2147483647;
+    int ph=0;
+    for(int i=0;i<size;i++)
+    {
+        if(input[i]<min)
+        {
+            min=input[i];
+            ph=i;
+        }
+    }
+    if(ph!=0)
+    {
+        return ph++;
+    }
+    else 
+    {
+        return ph;
+    }
+}
