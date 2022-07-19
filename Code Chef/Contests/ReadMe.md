@@ -1,1 +1,1 @@
-# Priblems Solved In CodeChef Contests
+# Problems Solved In CodeChef Contests
