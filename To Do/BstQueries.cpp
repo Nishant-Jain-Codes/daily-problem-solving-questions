@@ -4,3 +4,8 @@ https://www.codingninjas.com/codestudio/problems/bst-queries_1095658?topList=lov
 
 */
 
+problems --
+  
+  
+  time complexity 
+  too slow code 
