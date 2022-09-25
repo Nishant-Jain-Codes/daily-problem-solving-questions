@@ -41,7 +41,7 @@ Step 3 : n = 2 / 2 = 1
 // dynamic proggramming 
 int countMinStepsToOne(int n)
 {
-    int *ans = new int(n+1);
+    int *ans = new int[n+1];
     ans[0]=0;
     ans[1]=0;
     ans[2]=1;
@@ -85,7 +85,7 @@ int countHelper(int *arr,int n)
 
 int countMinStepsToOne(int n)
 {
-    int * arr=new int(n+1);
+    int * arr=new int[n+1];
     for(int i=0;i<=n;i++)
     {
         arr[i]=-1;
