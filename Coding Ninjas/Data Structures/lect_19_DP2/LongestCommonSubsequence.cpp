@@ -33,7 +33,7 @@ int LCS_DP(string a , string b)
     {
         for(int j=1;j<=b.size();j++)
         {
-            if(a[i]==a[j])
+            if(a[a.size()-i]==b[b.size()-j])
             {
                 arr[i][j]=1+arr[i-1][j-1];
             }
