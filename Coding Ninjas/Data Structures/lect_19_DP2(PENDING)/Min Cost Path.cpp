@@ -49,7 +49,7 @@ Sample Output 3 :
 
 
 #include<bits/stdc++.h>
-
+using namespace std;
 //recursive - brute force
 int sol(int **input , int Trow,int Tcol , int row, int col)
 {
