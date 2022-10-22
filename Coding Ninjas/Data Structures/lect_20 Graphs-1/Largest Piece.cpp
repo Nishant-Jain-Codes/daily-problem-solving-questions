@@ -1,5 +1,6 @@
 /*
 
+
 It's Gary's birthday today and he has ordered his favourite square cake consisting of '0's and '1's . But Gary wants the biggest piece of '1's and no '0's . A piece of cake is defined as a part which consist of only '1's, and all '1's share an edge with each other on the cake. Given the size of cake N and the cake, can you find the count of '1's in the biggest piece of '1's for Gary ?
 Input Format :
 The first line of input contains an integer, that denotes the value of N. 
@@ -16,64 +17,63 @@ Sample Input 1:
 Sample Output 1:
 3
 
+
 */
 
-#include<bits/stdc++.h>
-using namespace std;
-int sol(vector<vector<int>> &cake, int n,int r,int c,int **arr)
-{
-    if(r>=n||c>=n||c<0||r<0||cake[r][c]!=1)
-        return 0;
-    if(arr[r][c]!=-1)
-        return arr[r][c];
-    cake[r][c]=-1;//marking visited
-    int a=sol(cake,n,r,c+1,arr);
-    int b=sol(cake,n,r,c-1,arr);
-    int C=sol(cake,n,r+1,c,arr);
-    int d=sol(cake,n,r-1,c,arr);
-    int ans=1 + a+b+C+d;
-    arr[r][c]=ans;
-    return ans;
-}
+// solution 
 
-int getBiggestPieceSize(vector<vector<int>> &cake, int n) {
-    // Write your code here
-    
-    int ans=INT_MIN;
-    int **arr=new int*[n];
-    for(int i=0;i<n;i++)
+#include <iostream>
+using namespace std;
+int sol(int **graph,int V)
+{
+    int ans=0;
+    for(int i=0;i<V;i++)
     {
-        arr[i]=new int[n];
-        for(int j=0;j<n;j++)
+        for(int j=0;j<V;j++)
         {
-            arr[i][j]=-1;
-        }
-            
-    }
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            if(cake[i][j]==1&&arr[i][j]==-1)
+            if(graph[i][j]==1)
             {
-                ans=max(ans,sol(cake,n,i,j,arr));
+                for(int k=0;k<V;k++)
+                {
+                    if(k==i)
+                        continue;
+                    if(graph[j][k]==1)
+                        
+                        if(graph[i][k]==1)
+                            ans++;
+                }
             }
         }
     }
     return ans;
 }
-
 int main() {
-    int n;
-    cin >> n;
-
-    vector<vector<int>> cake(n, vector<int>(n));
-
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            cin >> cake[i][j];
+    // Write your code here
+    int V,E;
+    cin>>V>>E;
+    int **graph=new int * [V];
+    for(int i=0;i<V;i++)
+    {
+        graph[i]=new int[V];
+        for(int j=0;j<V;j++)
+        {
+            graph[i][j]=0;
         }
     }
+    for(int i=0;i<E;i++)
+    {
+        int x,y;
+        cin>>x>>y;
+        graph[x][y]=1;
+        graph[y][x]=1;
+    }
 
-    cout << getBiggestPieceSize(cake, n);
+    int ans=sol(graph,V)/6; 
+ 
+    cout<<ans<<endl;
+    for(int i=0;i<V;i++)
+    {
+        delete []graph[i];
+    }
+    delete []graph;
 }
