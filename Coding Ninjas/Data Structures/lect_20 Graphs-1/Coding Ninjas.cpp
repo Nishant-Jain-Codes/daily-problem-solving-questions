@@ -84,7 +84,7 @@ bool hasPath(vector<vector<char>> &board, int n, int m) {
     }
     return false;
 }
-int main() {
+int main() { 
     int n, m;
     cin >> n >> m;
 
