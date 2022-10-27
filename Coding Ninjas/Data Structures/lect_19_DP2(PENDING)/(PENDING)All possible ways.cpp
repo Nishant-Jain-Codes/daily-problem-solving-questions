@@ -26,3 +26,23 @@ Following are the three ways:
 2. 100 = 8^2 + 6^2
 3. 100 = 7^2+5^2+4^2+3^2+1^2
 */
+#include <bits/stdc++.h>
+using namespace std;
+int sol(int x , int n, int curNo)
+{
+    if(x<0)
+        return 0;
+    if(x==0)
+        return 1;
+    
+    int ans=0;
+    for(int i=curNo;pow(i,n)<=x;i++)
+    {
+        ans+=sol(x-pow(i,n),n,i+1);
+    }
+    return ans;
+}
+
+int getAllWays(int x, int n) {
+    return sol(x,n,1);
+}
