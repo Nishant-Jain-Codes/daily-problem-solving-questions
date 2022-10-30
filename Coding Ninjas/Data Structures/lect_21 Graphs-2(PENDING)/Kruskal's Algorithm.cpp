@@ -117,7 +117,8 @@ int main()
             parent[i]=i;
         }
     sort(graph.begin(),graph.end(),comp);
-
+    
     makeMST(graph,parent,v);
+    delete []parent;
     return 0;
 }
