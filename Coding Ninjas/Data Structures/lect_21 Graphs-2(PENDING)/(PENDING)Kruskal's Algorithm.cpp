@@ -28,3 +28,96 @@ Sample Output 1 :
 0 3 5
 
 */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+class edge{
+public:
+    int v1;
+    int v2;
+    int w;
+    edge(int v1,int v2, int w)
+    {
+        this ->v1=v1;
+        this ->v2=v2;
+        this ->w = w;
+    }
+};
+
+bool comp(edge e1,edge e2)
+{
+    if(e1.w<e2.w)
+        return true;
+    return false;
+}
+int giveParent(int v,int *parent)
+{
+   if(parent[v]==v)
+    return v;
+    
+    return giveParent(parent[v],parent);
+}
+bool isPossible(edge e1,int *parent)
+{
+    int p1 = giveParent(e1.v1,parent);
+    int p2 = giveParent(e1.v2,parent);
+    parent[p1]=p2;
+    if(p1==p2)
+        return false;
+    else 
+        return true;
+}
+void makeMST(vector<edge> graph,int *parent , int v)
+{
+    vector<edge> MST;
+    int count=0;
+    for(int i=0;i<graph.size();i++)
+    {
+        if(count>v-1)
+            break;
+
+        edge currEdge= graph[i];
+        if(isPossible(currEdge,parent))
+        {
+            count++;
+            MST.push_back(currEdge);
+        }
+    }
+    for(int i=0;i<v-1;i++)
+    {
+        edge e = MST[i];
+        int v1=e.v1;
+        int v2=e.v2;
+        int w=e.w;
+        if(v1<v2)
+            cout<<v1<<" "<<v2<<" "<<w<<endl;
+        else 
+            cout<<v2<<" "<<v1<<" "<<w<<endl; 
+    }
+}
+
+
+int main()
+{   
+    int v,e;
+    cin>>v>>e;
+    vector<edge> graph;
+    for(int i=0;i<e;i++)
+    {
+        int v1,v2,w;
+        cin>>v1>>v2>>w;
+        edge  e1(v1,v2,w);
+        graph.push_back(e1);
+    }
+    int *parent = new int[v];
+    for(int i=0;i<v;i++)
+        {
+            parent[i]=i;
+        }
+    sort(graph.begin(),graph.end(),comp);
+
+    makeMST(graph,parent,v);
+    return 0;
+}
