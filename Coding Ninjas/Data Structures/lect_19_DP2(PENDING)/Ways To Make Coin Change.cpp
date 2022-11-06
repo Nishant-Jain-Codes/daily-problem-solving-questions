@@ -31,7 +31,42 @@ Sample Output 2 :
 */
 #include <bits/stdc++.h>
 using namespace std;
+//memoisation 
+/*
 
+int findWays(int *den,int curIndex , int val , int **dp)
+{
+    if(curIndex==0)
+        return (val%den[0]==0);
+    int take=0,notTake;
+    if(dp[curIndex-1][val]!=-1)
+        notTake=dp[curIndex-1][val];
+    else
+        notTake = findWays(den,curIndex-1,val,dp);
+    if(val>=den[curIndex])
+        if(dp[curIndex][val-den[curIndex]]!=-1)
+            take=dp[curIndex][val-den[curIndex]];
+        else
+            take = findWays(den,curIndex,val-den[curIndex],dp);
+    
+    int ans = notTake+take;
+    dp[curIndex][val]=ans;
+    return ans;
+}
+
+int countWaysToMakeChange(int den[], int n, int v){
+    //Write your code here
+    int** dp= new int*[n];
+    for(int i=0;i<n;i++)
+    {
+        dp[i]=new int[v+1];
+        for(int j=0;j<=v;j++)
+             dp[i][j]=-1;
+    }
+
+   return  findWays(den,n-1,v,dp);
+}
+*/
 
 int countWaysToMakeChange(int den[], int n, int v)
 {
