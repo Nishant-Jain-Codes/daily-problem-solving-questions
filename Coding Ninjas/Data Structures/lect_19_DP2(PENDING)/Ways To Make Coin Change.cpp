@@ -29,3 +29,48 @@ Sample Input 2 :
 Sample Output 2 :
 13868903
 */
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int countWaysToMakeChange(int den[], int n, int v)
+{
+    int dp[n][v+1];
+    for(int i=0;i<=v;i++)
+    {
+        dp[0][i]=(v%den[0]==0);
+    }
+    for(int i=1;i<n;i++)
+    {
+        for(int j=0;j<=v;j++)
+        {
+            int take=0,notTake=0;
+                notTake = dp[i-1][j];
+            if(j-den[i]>=0)
+                take=dp[i][j-den[i]];
+            dp[i][j]=take + notTake;
+        }
+    }
+    return dp[n-1][v];
+}
+
+int main()
+{
+
+    int numDenominations;
+    cin >> numDenominations;
+    
+    int *denominations = new int[numDenominations];
+
+    for (int i = 0; i < numDenominations; i++)
+    {
+        cin >> denominations[i];
+    }
+
+    int value;
+    cin >> value;
+
+    cout << countWaysToMakeChange(denominations, numDenominations, value);
+
+    delete[] denominations;
+}
