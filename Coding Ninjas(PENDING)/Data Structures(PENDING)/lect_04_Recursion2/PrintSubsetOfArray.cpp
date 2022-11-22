@@ -39,7 +39,7 @@ void helper( int * input , int size , int * output,int ph)
         return ;
     }
     helper ( input+1,size-1,output,ph);
-    int * newout = new int[ph+2];
+    int * newout = new int[ph+1];
     for(int i=0;i<ph;i++)
     {
         newout[i]=output[i];
@@ -51,6 +51,6 @@ void helper( int * input , int size , int * output,int ph)
 void printSubsetsOfArray(int input[], int size) {
 	// Write your code here
     
-   int *output = new int [size];
+   int *output ;
     helper(input,size,output,0);
 }
