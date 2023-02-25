@@ -35,7 +35,7 @@ public:
         
     }
     */
-    
+    /*
     //method 2
       int *findTwoElement(int *a, int n) {
         int *answer=new int[2]{-1};
@@ -56,7 +56,31 @@ public:
             }
         }
         return answer;
-     }   
+     }*/
+    int *findTwoElement(int *arr, int n) {
+        // code here
+        int first , second ;
+        for(int i=0;i<n;i++)
+        {
+
+            int targIdx = abs(arr[i])-1;
+            if(arr[targIdx]<0)
+                {
+
+                    first = targIdx+1;
+                }
+            else 
+                arr[targIdx]*=-1;
+        }
+        for(int i=0;i<n;i++){
+            if(arr[i]>0)
+                second = i+1;
+        }
+        int * ans = new int [2];
+        ans[0]=first;
+        ans[1]=second;
+        return ans;
+    }
 };
 
 //{ Driver Code Starts.
