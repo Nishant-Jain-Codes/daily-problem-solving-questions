@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/binary-tree-preorder-traversal/submissions/814813328/
+// https://leetcode.com/problems/binary-tree-preorder-traversal/description/
 
 /**
  * Definition for a binary tree node.
@@ -13,7 +13,25 @@
  */
 class Solution {
 public:
-    
+    //iterative
+    vector<int> preorderTraversal(TreeNode* root) {
+        stack<TreeNode*> stk;
+        vector<int> ans;
+        if(root==NULL)
+            return ans;
+        stk.push(root);
+        while(!stk.empty()){
+            TreeNode* t = stk.top();
+            stk.pop();
+            ans.push_back(t->val);
+            if(t->right)
+                stk.push(t->right);
+            if(t->left)
+                stk.push(t->left);
+        };
+        return ans;
+    }
+    // //recursive
     void preOrder(TreeNode* root, vector<int>&ans)
     {
         if(root==NULL)
