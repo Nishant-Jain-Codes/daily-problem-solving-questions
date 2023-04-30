@@ -13,7 +13,8 @@
  */
 class Solution {
 public:
-    // O(N) space and O(N) time 
+    // O(N) space and O(N) time brute force
+    /*
     void inOrder_Traversal(TreeNode* root, vector<int> & inOrder){
         if(root==NULL)
             return ;
@@ -29,5 +30,16 @@ public:
                 return false;
         }
         return true;
+    }*/
+    bool sol(TreeNode* root, long long int Lrange,long long int Rrange){
+        if(!root )
+            return true;
+        bool rootSol = root->val > Lrange && root->val<Rrange;
+        return rootSol && sol(root->left ,Lrange,root->val) && sol(root->right,root->val,Rrange);
     }
+    bool isValidBST(TreeNode* root){
+        long long int  Lrange = LLONG_MIN,Rrange=LLONG_MAX;
+        return sol(root,Lrange,Rrange);
+    }
+
 };
