@@ -3,7 +3,9 @@
 
 Step - (1) Learn the basics
 ---------------------------
-
+-   [x]  Step 1.1 learn the basics
+-   [x]  Step 1.2 things to know in programming language
+-   [x]  Step 1.3 know basic STL
 -   [x]  Step 1.4 Know Basic Maths
 -   [x]  Step 1.5 Learn Basic Recursion
 -   [x]  Step 1.6 Learn Basic Hashing
@@ -95,7 +97,7 @@ Step - (14) Binary Search Trees
 -------------------------------
 
 -   [x]  Step 14.1 Concepts
--   [ ]  Step 13.2 Practice 
+-   [x]  Step 14.2 Practice 
 
 Step - (15) Graphs
 ------------------
