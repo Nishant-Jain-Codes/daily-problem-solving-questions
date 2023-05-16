@@ -34,7 +34,7 @@ Step - (5) Strings E&M
 ----------------------
 
 -   [x]  Step 5.1 Basic and Easy String Problems
--   [ ]  Step 5.2 Medium String Problems
+-   [x]  Step 5.2 Medium String Problems
 
 Step - (6) Learn LinkedList
 --------------------------------
