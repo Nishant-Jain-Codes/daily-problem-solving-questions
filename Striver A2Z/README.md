@@ -102,7 +102,7 @@ Step - (14) Binary Search Trees
 Step - (15) Graphs
 ------------------
 
--   [ ]  Step 15.1 Learning
+-   [x]  Step 15.1 Learning
 -   [ ]  Step 15.2 Problems on BFS,DFS
 -   [ ]  Step 15.3 Topo Sort and Problems
 -   [ ]  Step 15.4 Shortest Path Algorithms and Problems
