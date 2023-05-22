@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/number-of-provinces/#:~:text=A%20province%20is%20a%20group,the%20total%20number%20of%20provinces.
 
+// O(N^2) - Time
+// O(N^2) - Space
 class Solution {
 private:
     void DFS(int curV, vector<vector<int>>& adj, vector<bool>& visited) {
