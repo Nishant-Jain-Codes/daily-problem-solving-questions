@@ -1,8 +1,4 @@
 // https://practice.geeksforgeeks.org/problems/eventual-safe-states/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=eventual-safe-states
-
-//{ Driver Code Starts
-// Initial Template for C++
-
 //{ Driver Code Starts
 // Initial Template for C++
 
@@ -14,7 +10,7 @@ using namespace std;
 // User function Template for C++
 
 class Solution {
-    private:
+   private:
     bool dfsCycleCheck(int curV , vector<int> adj[],vector<bool>&visited,vector<bool>&pathVisited,vector<bool>&safeState){
         visited[curV]=true;
         pathVisited[curV]=true;
@@ -35,9 +31,7 @@ class Solution {
         safeState[curV]=true;
         return false;
     }
-public:
-    vector<int> eventualSafeNodes(int V, vector<int> adj[]) {
-        // code here
+    vector<int> dfsSolution(int V, vector<int> adj[]){
         vector<bool> safeState(V,false);
         vector<bool> visited(V,false);
         vector<bool> pathVisited(V,false);
@@ -53,6 +47,43 @@ public:
             }
         }
         return ans;
+    }
+    private:
+    vector<int> bfsSolution(int V ,vector<int> adj[]){
+        vector<int> adjRev[V];
+        vector<int> indegree(V,0);
+        for(int i=0;i<V;i++){
+            for(auto it : adj[i]){
+                adjRev[it].push_back(i);
+                indegree[i]++;
+            }
+        }       
+        queue<int> q;
+        for(int i=0;i<V;i++){
+            if(indegree[i]==0){
+                q.push(i);
+            }
+        }
+        vector<int> answer;
+        while(!q.empty()){
+            int curV = q.front();
+            answer.push_back(curV);
+            q.pop();
+            for(auto it : adjRev[curV]){
+                indegree[it]--;
+                if(indegree[it]==0){
+                    q.push(it);
+                }
+            }
+        }
+        sort(answer.begin(),answer.end());
+        return answer;
+    }
+public:
+    vector<int> eventualSafeNodes(int V, vector<int> adj[]) {
+        // code here
+        // return dfsSolution(V,adj);
+        return bfsSolution(V,adj);
     }
 };
 
