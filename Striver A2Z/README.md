@@ -107,7 +107,7 @@ Step - (15) Graphs
 -   [x]  Step 15.3 Topo Sort and Problems
 -   [x]  Step 15.4 Shortest Path Algorithms and Problems
 -   [ ]  Step 15.5 Minimum Spanning Tree, Disjoint Set and Problems
--   [ ]  Step 15.6 Other Algorithms
+-   [x]  Step 15.6 Other Algorithms
 
 Step - (16) Dynamic Programming
 -------------------------------
