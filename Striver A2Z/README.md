@@ -48,7 +48,7 @@ Step - (6) Learn LinkedList
 Step - (7) Recursion
 --------------------
 
--   [ ]  Step 7.1 Get a Strong Hold
+-   [x]  Step 7.1 Get a Strong Hold
 -   [ ]  Step 7.2 Subsequences Pattern
 -   [ ]  Step 7.3 Trying out all Combos -Hard
 
