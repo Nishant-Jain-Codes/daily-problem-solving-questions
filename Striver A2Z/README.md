@@ -115,7 +115,7 @@ Step - (16) Dynamic Programming
 
 - [x]  Step 16.1 Introduction to DP
 - [x]  Step 16.2 1D DP
-- [ ]  Step 16.3 2D,3D DP and DP on Grids
+- [x]  Step 16.3 2D,3D DP and DP on Grids
 - [ ]  Step 16.4 DP on Subsequences
 - [ ]  Step 16.5 DP on Strings
 - [ ]  Step 16.6 DP on Stocks
