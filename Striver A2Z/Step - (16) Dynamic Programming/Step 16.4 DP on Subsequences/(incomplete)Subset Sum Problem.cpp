@@ -6,10 +6,6 @@ using namespace std;
 
 // } Driver Code Ends
 //User function template for C++
-// Constraints:
-// 1 <= N <= 100
-// 1<= arr[i] <= 100
-// 1<= sum <= 10^5
 
 class Solution{   
 private:
@@ -25,20 +21,18 @@ private:
         return dp[idx][sum]=recursive(idx+1,sum-arr[idx],arr) || recursive(idx+1,sum,arr);
     }
     bool tabulation(vector<int>& arr,int sum){
-        int maxSum = 0;
-        for(int i=0;i<arr.size();i++) maxSum+=arr[i];
-        vector<vector<bool>> dp(arr.size()+1,vector<int>(maxSum+1,false)); 
-        for(int i=0;i<=arr.size();i++){
-            dp[i][0]=true;
-            dp[i][arr[i]]=true;
-        }
-        for(int i=1;i<=arr.size();i++){
-            for(int j=1;j<=maxSum;j++){
-                if(j-arr[i-1]>=0) dp[i][j] = dp[i-1][j-arr[i-1]] || dp[i-1][j];
-                else dp[i][j] = dp[i-1][j];
+        vector<vector<bool>> dp(arr.size()+1,vector<bool>(sum+1,false));
+        for(int i=0;i<=arr.size();i++) dp[i][0] = true;//can make sum == 0 at any index
+        dp[0][arr[0]] = true;//can make sum == first element at first index
+        for(int idx = 1; idx<=arr.size();idx++){
+            for(int target = 1;target<=sum ; target++){
+                bool notTake = dp[idx-1][target];
+                bool take = false;
+                if(target-arr[idx]>=0) take = dp[idx-1][target-arr[idx]];
+                dp[idx][target] = take || notTake;
             }
         }
-        return dp[arr.size()][sum];
+        return dp[arr.size()-1][sum];
 
     }
 public:
@@ -46,15 +40,14 @@ public:
         //tabulation
         return tabulation(arr,sum);
         //memoisation
-        int maxSum = 0;
-        for(int i=0;i<arr.size();i++) maxSum+=arr[i];
-        vector<vector<int>> dp(arr.size()+1,vector<int>(maxSum+1,-1));
+        vector<vector<int>> dp(arr.size()+1,vector<int>(sum+1,-1));
         if(memoisation(0,sum,arr,dp)==1) return true;
             return false;
         //recursive
         return recursive(0,sum,arr);
     }
 };
+
 
 //{ Driver Code Starts.
 int main() 
