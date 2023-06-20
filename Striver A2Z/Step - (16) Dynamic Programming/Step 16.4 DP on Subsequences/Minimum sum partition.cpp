@@ -3,6 +3,7 @@
 using namespace std;
 
 // } Driver Code Ends
+
 class Solution{
 
 public:
@@ -23,24 +24,28 @@ private:
         for(int i=0;i<n;i++){
             sum += nums[i];
         }
-        vector<vector<int>> dp(n,vector<int>(sum+1,0));
+        vector<vector<bool>> dp(n,vector<bool>(sum+1,false));
+        dp[0][nums[0]] = true;
         for(int i=0;i<n;i++){
-            dp[i][0] = sum; //if curSum == 0 then sum1stHalf = sum and sum2ndHalf = 0
-        }
-        for(int i=0;i<=sum;i++){
-            dp[0][i] = abs(nums[0]-i);
+            dp[i][0] = true;
         }
         for(int i=1;i<n;i++){
             for(int j=1;j<=sum;j++){
-                int left = INT_MAX;
-                if(j+nums[i]<=sum)
-                    left = dp[i-1][j+nums[i]];
-                int right = dp[i-1][j];
+                bool notTake = dp[i-1][j];
+                bool take = false;
+                if(j-nums[i]>=0){
+                    take = dp[i-1][j-nums[i]];
+                }
+                dp[i][j]= notTake || take;
             }
         }
         int ans = INT_MAX;
-        for(int i=0;i<=sum;i++){
-            ans = min(ans,dp[n-1][i]);
+        for(int i=0;i<=(sum+1)/2;i++){
+            if(dp[n-1][i]){
+                int s1 = i;
+                int s2 = sum-i;
+                ans = min(ans, abs(s1-s2));
+            }
         }
         return ans;
     }
@@ -69,11 +74,12 @@ private:
     }
 };
 
-
 //{ Driver Code Starts.
 int main() 
 {
-    int t;
+   
+   
+   	int t;
     cin >> t;
     while (t--)
     {
@@ -82,13 +88,13 @@ int main()
 
         int a[n];
         for(int i = 0; i < n; i++)
-            cin >> a[i];
+        	cin >> a[i];
 
-        
+       
 
-        Solution ob;
-        cout << ob.minDifference(a, n) << "\n";
-            
+	    Solution ob;
+	    cout << ob.minDifference(a, n) << "\n";
+	     
     }
     return 0;
 }
