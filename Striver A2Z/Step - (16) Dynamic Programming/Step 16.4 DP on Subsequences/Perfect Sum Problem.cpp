@@ -34,29 +34,52 @@ private:
         return dp[idx][sum] = (take + notTake)%mod;
     }
 
-    // ! not working properly 
     int tabulation(int * arr ,int n , int sum){
         vector<vector<int>> dp(n,vector<int>(sum+1,0));
         for(int i=0;i<n;i++){
             dp[i][0]=1; // sum = 0 is possible for every index
         }
         if(arr[0]<=sum)
-            dp[0][arr[0]]+=1;
+            dp[0][arr[0]]++;
         for(int i=1;i<n;i++){
-            for(int j=1;j<=sum;j++){
+            for(int j=0;j<=sum;j++){
                 int take = 0;
-                if(j - arr[i] >=0)
+                if(j - arr[i] >=0){
                     take = dp[i - 1 ][j - arr[i]];
+                }
+                    
                 int notTake = dp[i - 1][j];
                 dp[i][j] = (take + notTake)%mod;
             }
         }
         return dp[n-1][sum];
     }
+    int optimized(int * arr , int n , int sum ){
+        vector<int> prev(sum+1,0);
+        vector<int> curr(sum+1,0);
+        prev[0] = 1;
+        curr[0] = 1;
+        if(arr[0]<=sum)
+            prev[arr[0]]++;
+        for(int i=1;i<n;i++){
+            for(int j=0;j<=sum;j++){
+                int take = 0;
+                if(j - arr[i] >=0){
+                    take = prev[j - arr[i]];
+                }
+                    
+                int notTake = prev[j];
+                curr[j] = (take + notTake)%mod;
+            }
+            prev=curr;
+        }
+        return prev[sum];
+    }
 public:
 	int perfectSum(int arr[], int n, int sum)
 	{
         // Your code goes 
+        return optimized(arr,n,sum);
         return tabulation(arr,n,sum);
 
         vector<vector<int>> dp(n,vector<int>(sum+1,-1));
@@ -66,6 +89,9 @@ public:
 	}
 	  
 };
+
+
+
 
 
 //{ Driver Code Starts.
