@@ -8,10 +8,12 @@ using namespace std;
 // } Driver Code Ends
 // User function Template for C++
 
+
 class Solution{
 public:
     int cutRod(int price[], int n) {
-        //code here
+        //code 
+        return optimized(price, n);
         return tabulation(price, n);
         vector<vector<int>> dp(n, vector<int>(n+1, -1)); //index, length
         return memoisation(price, n-1, n, dp);
@@ -46,8 +48,9 @@ private:
     int tabulation(int * price , int n){
         vector<vector<int>> dp(n, vector<int>(n+1, 0)); //index, length
         //at every index if we have length 1 then price will be price[0]
-        for(int idx=0;idx<n;idx++)
-            dp[idx][1] = price[0];
+        for(int l=0;l<=n;l++){
+            dp[0][l] = l*price[0];
+        }
 
         for(int idx=1;idx<n;idx++){
             for(int length=1 ; length<=n ; length++){
@@ -60,7 +63,30 @@ private:
         }
         return dp[n-1][n];
     }
+    //time complexity (n^2)
+    //space complexity (n)
+    int optimized(int * price , int n){
+        vector<int> prev(n+1,0);
+        vector<int> curr(n+1,0);
+        //at every index if we have length 1 then price will be price[0]
+        for(int l=0;l<=n;l++){
+            prev[l] = l*price[0];
+        }
+
+        for(int idx=1;idx<n;idx++){
+            for(int length=1 ; length<=n ; length++){
+                int notTake = prev[ length];
+                int take = 0;
+                if(length-(idx+1)>=0)
+                    take = curr[ length-(idx+1)] + price[idx];
+                curr[length] = max(notTake, take);
+            }
+            prev = curr;
+        }
+        return prev[n];
+    }
 };
+
 
 
 //{ Driver Code Starts.
