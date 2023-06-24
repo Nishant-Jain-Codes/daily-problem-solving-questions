@@ -13,6 +13,7 @@ public:
     int lcs(int x, int y, string s1, string s2)
     {
         // your code here
+        return optimized(x, y, s1, s2);
         return tabulation(x, y, s1, s2);
         vector<vector<int>> dp(x, vector<int>(y, -1));
         return memoisation(x-1, y-1, s1, s2, dp);
@@ -33,24 +34,33 @@ private:
             return dp[i][j] = memoisation(i-1, j-1, s1, s2,dp) + 1;
         return dp[i][j] =  max(memoisation(i-1, j, s1, s2,dp), memoisation(i, j-1, s1, s2,dp));
     }
-    //! base case is not correct
     int tabulation(int x, int y, string s1, string s2){
-        vector<vector<int>> dp(x, vector<int>(y, 0));
-        // for(int i=0;i<x;i++){
-        //     for(int j=0;j<y;j++){
-        //         if(s1[i]==s2[j])
-        //             dp[i][j] = 1;
-        //     }   
-        // }
-        for(int i=x-1;i>=0;i--){
-            for(int j=y-1;j>=0;j--){
-                if(s1[i]==s2[j])
+        vector<vector<int>> dp(x+1, vector<int>(y+1, 0));
+        
+        for(int i=1;i<=x;i++){
+            for(int j=1;j<=y;j++){
+                if(s1[i-1]==s2[j-1])
                     dp[i][j] = dp[i-1][j-1] + 1;
                 else 
                     dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
             }
         }
-        return dp[x-1][y-1];
+        return dp[x][y];
+    }
+    int optimized(int x, int y, string s1, string s2){
+        vector<int> prev(max(x,y)+1, 0);
+        vector<int> curr(max(x,y)+1, 0);
+        
+        for(int i=1;i<=x;i++){
+            for(int j=1;j<=y;j++){
+                if(s1[i-1]==s2[j-1])
+                    curr[j] = prev[j-1] + 1;
+                else 
+                    curr[j] = max(prev[j], curr[j-1]);
+            }
+            prev = curr;
+        }
+        return curr[y];
     }
 };
 
