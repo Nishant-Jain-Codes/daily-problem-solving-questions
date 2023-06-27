@@ -126,7 +126,7 @@ Step - (16) Dynamic Programming
 Step - (17) Tries
 -----------------
 
-- [ ]  Step 17.1 Theory
+- [x]  Step 17.1 Theory
 - [ ]  Step 17.2 Problems
 
 Step - (18) Strings H
