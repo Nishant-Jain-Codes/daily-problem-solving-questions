@@ -2,6 +2,8 @@
     "files.associations": {
         "*.ejs": "html",
         "string": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "iosfwd": "cpp",
+        "xlocale": "cpp"
     }
 }
