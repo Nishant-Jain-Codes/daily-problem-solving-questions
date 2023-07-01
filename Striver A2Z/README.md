@@ -127,7 +127,7 @@ Step - (17) Tries
 -----------------
 
 - [x]  Step 17.1 Theory
-- [ ]  Step 17.2 Problems
+- [x]  Step 17.2 Problems
 
 Step - (18) Strings H
 ---------------------
