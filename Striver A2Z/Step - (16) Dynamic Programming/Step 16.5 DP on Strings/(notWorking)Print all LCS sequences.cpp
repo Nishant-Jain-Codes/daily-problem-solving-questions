@@ -3,45 +3,46 @@
 using namespace std;
 
 // } Driver Code Ends
-class Solution
-{
+class Solution {
 public:
-    vector<string> all_longest_common_subsequences(string s, string t)
-    {
-        // Code here
-        vector<string> answer;
+    vector<string> all_longest_common_subsequences(string s, string t) {
+        set<string> answer;
         string output = "";
-        recursion(s.length()-1,t.length()-1,s, t, output, answer);
-        return answer;
+        recursion(s.length()-1, t.length()-1, s, t, output, answer);
+        vector<string> sol = vector<string>(answer.begin(), answer.end());
+        return sol;
     }
+
 private:
-//! not giving proper answer
-    void recursion(int idxS,int idxT,const string s, const string t,string & output , vector<string> & answer){
-        if(idxS<0||idxT<0){
-            if(output.length()==0)
-                return;
-            int curMaxLen = answer.empty() ? 0 : answer[0].length();
-            if(output.length()>curMaxLen){
-                answer.clear();
-                answer.push_back(output);
-            }
-            else if(output.length()==curMaxLen){
-                answer.push_back(output);
+// ! getting tle    
+    void recursion(int idxS, int idxT, const string& s, const string& t, const string& output, set<string>& answer) {
+        if (idxS < 0 || idxT < 0) {
+            if (!output.empty()) {
+                string longest = "";
+                if (!answer.empty()) {
+                    longest = *answer.begin();
+                }
+                int curMaxLen = longest.length() > 0 ? longest.length() : 0;
+                if (output.length() > curMaxLen) {
+                    answer.clear();
+                    answer.insert(output);
+                } else if (output.length() == curMaxLen) {
+                    answer.insert(output);
+                }
             }
             return;
         }
-        if(s[idxS]==t[idxT]){
-            output.push_back(s[idxS]);
-            recursion(idxS-1,idxT-1,s,t,output,answer);
-            output.pop_back();
+        
+        if (s[idxS] == t[idxT]) {
+            string newOutput = s[idxS] + output;
+            recursion(idxS-1, idxT-1, s, t, newOutput, answer);
         }
-        else{
-            recursion(idxS-1,idxT,s,t,output,answer);
-            recursion(idxS,idxT-1,s,t,output,answer);
+        else {
+            recursion(idxS-1, idxT, s, t, output, answer);
+            recursion(idxS, idxT-1, s, t, output, answer);
         }
     }
 };
-
 
 
 //{ Driver Code Starts.
