@@ -6,6 +6,8 @@
         "iosfwd": "cpp",
         "xlocale": "cpp",
         "deque": "cpp",
-        "memory": "cpp"
+        "memory": "cpp",
+        "stack": "cpp",
+        "xutility": "cpp"
     }
 }
