@@ -2,7 +2,11 @@ class Solution
 {
 public:
     string shortestCommonSupersequence(string str1, string str2)
-    {
+    {   
+        // USING MODIFIED LCS
+        return modifiedLCS(str1, str2);
+
+        // LCS
         string lcs = LCS(str1, str2);
         int lcsIdx = 0;
         int str1Idx = 0;
@@ -81,6 +85,50 @@ private:
         }
         if (lcs == 0)
             return "";
+        return ans;
+    }
+    string modifiedLCS(string s1, string s2){
+        int x = s1.size(), y = s2.size();
+        vector<vector<int>> dp(x + 1, vector<int>(y + 1, 0));
+        // filling up the dp table
+        for (int i = 1; i <= x; i++)
+        {
+            for (int j = 1; j <= y; j++)
+            {
+                if (s1[i - 1] == s2[j - 1])
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                else
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+        string ans = "";
+        int i = x, j = y;
+        while(i>0 && j>0){
+            if(s1[i-1]==s2[j-1]){
+                ans.push_back(s1[i-1]);
+                i--;
+                j--;
+            }
+            else{
+                if(dp[i-1][j]>dp[i][j-1]){
+                    ans.push_back(s1[i-1]);
+                    i--;
+                }
+                else{
+                    ans.push_back(s2[j-1]);
+                    j--;
+                }
+            }
+        }
+        while(i>0){
+            ans.push_back(s1[i-1]);
+            i--;
+        }
+        while(j>0){
+            ans.push_back(s2[j-1]);
+            j--;
+        }
+        reverse(ans.begin(), ans.end());
         return ans;
     }
 };
