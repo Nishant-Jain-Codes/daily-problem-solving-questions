@@ -8,6 +8,8 @@
         "deque": "cpp",
         "memory": "cpp",
         "stack": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "initializer_list": "cpp",
+        "type_traits": "cpp"
     }
 }
