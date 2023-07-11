@@ -12,6 +12,11 @@
         "initializer_list": "cpp",
         "type_traits": "cpp",
         "limits": "cpp",
-        "ostream": "cpp"
-    }
+        "ostream": "cpp",
+        "chrono": "cpp",
+        "random": "cpp",
+        "valarray": "cpp",
+        "ranges": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
