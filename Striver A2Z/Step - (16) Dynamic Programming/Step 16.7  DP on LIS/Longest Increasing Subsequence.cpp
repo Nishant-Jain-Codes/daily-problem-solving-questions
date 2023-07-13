@@ -22,6 +22,7 @@ public:
     }
     // time complexity = O(2^n)
     // space complexity = O(n) stack space
+private:
     int recursion(vector<int> &nums, int idx, int prevIdx)
     {
         if (idx == nums.size())
