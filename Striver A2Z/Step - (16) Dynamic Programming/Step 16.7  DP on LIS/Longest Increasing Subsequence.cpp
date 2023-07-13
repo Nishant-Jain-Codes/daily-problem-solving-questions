@@ -118,35 +118,31 @@ private:
     // time complexity = O(nlogn)
     // space complexity = O(n)
     int binarySearchApproach(vector<int> &nums)
-{
-    vector<int> dp;
-    dp.push_back(nums[0]); 
-    // Initialize the dynamic programming (DP) vector with the first element of 'nums'
-
-    // Iterate through the elements of 'nums' starting from the second element
-    for (int i = 1; i < nums.size(); i++)
     {
-        if (nums[i] > dp.back())
-        {
-            // If the current element is greater than the last element in 'dp',
-            // we can extend the longest increasing subsequence (LIS) by appending the current element
-            dp.push_back(nums[i]);
-        }
-        else
-        {
-            // If the current element is not greater than the last element in 'dp',
-            // we need to find the index where the current element can be inserted while maintaining a sorted order
-            int idx = lower_bound(dp.begin(), dp.end(), nums[i]) - dp.begin();
+        vector<int> dp;
+        dp.push_back(nums[0]);
+        // Initialize the dynamic programming (DP) vector with the first element of 'nums'
 
-            if (idx < dp.size())
-                dp[idx] = nums[i]; // Replace the element at index 'idx' with the current element
+        // Iterate through the elements of 'nums' starting from the second element
+        for (int i = 1; i < nums.size(); i++)
+        {
+            if (nums[i] > dp.back())
+            {
+                // If the current element is greater than the last element in 'dp',
+                // we can extend the longest increasing subsequence (LIS) by appending the current element
+                dp.push_back(nums[i]);
+            }
             else
-                dp[0] = nums[i]; // If 'idx' is out of range, replace the first element of 'dp' with the current element
-        }
-    }
-    return dp.size(); // Return the size of the LIS
-}
+            {
+                // If the current element is not greater than the last element in 'dp',
+                // we need to find the index where the current element can be inserted while maintaining a sorted order
+                int idx = lower_bound(dp.begin(), dp.end(), nums[i]) - dp.begin();
 
+                dp[idx] = nums[i]; // Replace the element at index 'idx' with the current element
+            }
+        }
+        return dp.size(); // Return the size of the LIS
+    }
 };
 
 class Solution
