@@ -1,13 +1,15 @@
 class Solution
 {
 public:
+    // time O(nlogn) + O(16*n^2)
+    // space O(n)
     int longestStrChain(vector<string> &words)
     {
         // sort according to size
         sort(words.begin(), words.end(),
             [&](string &a, string &b)
             { return a.length() < b.length(); }
-        );
+        );//made a comparator using lambda function
         vector<int> dp(words.size(), 1);
         int ans = 1;
         for (int i = 1; i < words.size(); i++)
