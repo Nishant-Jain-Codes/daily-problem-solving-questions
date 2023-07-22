@@ -57,7 +57,7 @@ Step - (8) Bit Manipulation
 ---------------------------
 
 - [ ]  Step 8.1 Learn Bit Manipulation
-- [ ]  Step 8.2 Interview Problems
+- [x]  Step 8.2 Interview Problems
 - [ ]  Step 8.3 Advanced Maths
 
 Step - (9) Stack and Queues
