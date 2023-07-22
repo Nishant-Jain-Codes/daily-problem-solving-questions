@@ -64,7 +64,7 @@ Step - (9) Stack and Queues
 ---------------------------
 
 - [x]  Step 9.1 Learning
-- [ ]  Step 9.2 Prefix, Infix, PostFix Conversion Problems
+- [x]  Step 9.2 Prefix, Infix, PostFix Conversion Problems
 - [ ]  Step 9.3 Monotonic Stack-Queue Problems [VVV. Imp]
 - [ ]  Step 9.4 Implementation Problems
 
