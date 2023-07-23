@@ -25,7 +25,8 @@
         "regex": "cpp",
         "utility": "cpp",
         "*.tcc": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "unordered_map": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
