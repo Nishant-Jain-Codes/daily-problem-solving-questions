@@ -26,7 +26,10 @@
         "utility": "cpp",
         "*.tcc": "cpp",
         "list": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "tuple": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
