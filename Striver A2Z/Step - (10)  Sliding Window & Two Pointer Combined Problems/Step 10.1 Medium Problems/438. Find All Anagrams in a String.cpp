@@ -1,26 +1,33 @@
-class Solution {
+class Solution
+{
 public:
-    vector<int> findAnagrams(string txt, string word) {
-        vector<int> reqHash(26,0);
-        for(int i=0;i<word.length();i++)
-            reqHash[word[i]-'a']++;
-        vector<int> hash(26,0);
-        int i =0;
-        int j = 0;
-        int k = word.length();
+    vector<int> findAnagrams(string txt, string word)
+    {
+        unordered_map<char, int> map;
+        for (auto c : word)
+            map[c]++;
+        int i = 0, j = 0, count = map.size();
         vector<int> ans;
-        while(j<txt.length()){
-            hash[txt[j]-'a']++;
-            if(j-i+1<k)
+        while (j < txt.size())
+        {
+            if (map.find(txt[j]) != map.end())
+            {
+                map[txt[j]]--;
+                if (map[txt[j]] == 0)
+                    count--;
+            }
+            if (j - i + 1 < word.length())
                 j++;
-            else{
-                for(int idx=0;idx<26;idx++){
-                    if(hash[idx]!=reqHash[idx])
-                        break;
-                    if(idx==25)
-                        ans.push_back(i);
+            else
+            {
+                if (count == 0)
+                    ans.push_back(i);
+                if (map.find(txt[i]) != map.end())
+                {
+                    map[txt[i]]++;
+                    if (map[txt[i]] == 1)
+                        count++;
                 }
-                hash[txt[i]-'a']--;
                 i++;
                 j++;
             }
