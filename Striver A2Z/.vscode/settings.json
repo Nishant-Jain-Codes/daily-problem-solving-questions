@@ -29,7 +29,12 @@
         "unordered_map": "cpp",
         "tuple": "cpp",
         "cmath": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "optional": "cpp",
+        "system_error": "cpp",
+        "thread": "cpp",
+        "typeindex": "cpp",
+        "variant": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
