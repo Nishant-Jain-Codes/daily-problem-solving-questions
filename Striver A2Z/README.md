@@ -70,8 +70,8 @@ Step - (9) Stack and Queues
 
 Step - (10) Sliding Window & Two Pointer Combined Problems
 ----------------------------------------------------------
-- [ ]  Step 10.0 Learning
-- [ ]  Step 10.1 Medium Problems
+- [x]  Step 10.0 Learning
+- [x]  Step 10.1 Medium Problems
 - [ ]  Step 10.2 Hard Problems
 
 Step - (11) Heaps
