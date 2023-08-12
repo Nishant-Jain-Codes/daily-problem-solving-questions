@@ -77,7 +77,7 @@ Step - (10) Sliding Window & Two Pointer Combined Problems
 Step - (11) Heaps
 -----------------
 
-- [ ]  Step 11.1 Learning
+- [x]  Step 11.1 Learning
 - [ ]  Step 11.2 Medium Problems
 - [ ]  Step 11.3 Hard Problems
 
