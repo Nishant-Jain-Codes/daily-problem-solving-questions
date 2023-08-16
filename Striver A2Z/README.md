@@ -56,7 +56,7 @@ Step - (7) Recursion
 Step - (8) Bit Manipulation
 ---------------------------
 
-- [ ]  Step 8.1 Learn Bit Manipulation
+- [x]  Step 8.1 Learn Bit Manipulation
 - [x]  Step 8.2 Interview Problems
 - [ ]  Step 8.3 Advanced Maths
 
