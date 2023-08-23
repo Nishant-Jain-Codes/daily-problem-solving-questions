@@ -84,7 +84,7 @@ Step - (11) Heaps
 Step - (12) Greedy Algorithms
 -----------------------------
 
-- [ ]  Step 12.1 Easy Problems
+- [x]  Step 12.1 Easy Problems
 - [ ]  Step 12.2 Medium-Hard
 
 Step - (13) Binary Trees
