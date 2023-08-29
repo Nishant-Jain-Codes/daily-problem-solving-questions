@@ -121,7 +121,7 @@ Step - (16) Dynamic Programming
 - [x]  Step 16.6 DP on Stocks
 - [x]  Step 16.7 DP on LIS
 - [x]  Step 16.8 MCM DP - Partition DP
-- [ ]  Step 16.9 DP on Squares
+- [x]  Step 16.9 DP on Squares
 
 Step - (17) Tries
 -----------------
